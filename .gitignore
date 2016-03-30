@@ -1,0 +1,11 @@
+
+/target
+
+# eclipse stuff
+.classpath
+.project
+.settings
+
+# misc
+.DS_Store
+
