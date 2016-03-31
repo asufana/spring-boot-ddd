@@ -3,7 +3,7 @@
 
 	<groupId>com.github.asufana</groupId>
 	<artifactId>spring-boot-ddd</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -16,7 +16,7 @@
 		<connection>scm:git:git@github.com:asufana/spring-boot-ddd.git</connection>
 		<developerConnection>scm:git:git@github.com:asufana/spring-boot-ddd.git</developerConnection>
 		<url>scm:git:git@github.com:asufana/spring-boot-ddd.git</url>
-		<tag>spring-boot-ddd-1.0</tag>
+		<tag>spring-boot-ddd-1.1</tag>
 	</scm>
 
 	<build>
@@ -103,7 +103,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
-			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.2.5.RELEASE</version>
 		</dependency>
 		<!-- Spring -->
 		<dependency>
