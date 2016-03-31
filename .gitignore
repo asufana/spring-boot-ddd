@@ -1,11 +1,19 @@
 
-/target
-
-# eclipse stuff
+# Eclipse
 .classpath
 .project
-.settings
+.settings/
 
-# misc
+# Intellij
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Mac
 .DS_Store
+
+# Maven
+log/
+target/
 
