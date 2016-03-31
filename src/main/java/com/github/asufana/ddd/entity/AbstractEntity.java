@@ -1,10 +1,16 @@
 package com.github.asufana.ddd.entity;
 
-import java.time.*;
-
-import javax.persistence.*;
-
-import com.github.asufana.ddd.repo.*;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.PostLoad;
+import javax.persistence.PostPersist;
+import javax.persistence.PostRemove;
+import javax.persistence.PostUpdate;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
+import javax.persistence.Version;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 public abstract class AbstractEntity extends BaseEntity<AbstractEntity> {
@@ -89,8 +95,5 @@ public abstract class AbstractEntity extends BaseEntity<AbstractEntity> {
     
     /** エンティティが仕様を満たしているかどうか */
     public abstract void isSatisfied();
-    
-    /** リポジトリ取得 */
-    public abstract <T extends AbstractRepository<T>> T repo();
     
 }
