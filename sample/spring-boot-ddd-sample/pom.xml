@@ -70,39 +70,39 @@
         <dependency>
             <groupId>com.github.asufana</groupId>
             <artifactId>spring-boot-ddd</artifactId>
-            <version>1.1</version>
-            <!--
+            <version>1.2-SNAPSHOT</version>
             <scope>system</scope>
             <systemPath>${basedir}/../../target/spring-boot-ddd-1.2-SNAPSHOT.jar</systemPath>
-            -->
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>github</id>
-            <url>https://raw.github.com/asufana/spring-boot-ddd/mvn-repo/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
+    <!--
+<repositories>
+    <repository>
+        <id>github</id>
+        <url>https://raw.github.com/asufana/spring-boot-ddd/mvn-repo/</url>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+        </snapshots>
+    </repository>
+</repositories>
+        -->
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.springframework</groupId>
-                        <artifactId>springloaded</artifactId>
-                        <version>${spring-loaded.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>springloaded</artifactId>
+                    <version>${spring-loaded.version}</version>
+                </dependency>
+            </dependencies>
+        </plugin>
+    </plugins>
+</build>
 
 </project>

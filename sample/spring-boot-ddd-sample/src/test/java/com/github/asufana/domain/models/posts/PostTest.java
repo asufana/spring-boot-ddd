@@ -1,9 +1,11 @@
-package com.github.asufana.domain.models.threads;
+package com.github.asufana.domain.models.posts;
 
 import com.github.asufana.App;
 import com.github.asufana.ddd.test.AbstractTest;
 import com.github.asufana.domain.T;
-import com.github.asufana.domain.models.threads.repo.ThreadRepo;
+import com.github.asufana.domain.models.posts.repo.PostRepo;
+import com.github.asufana.domain.models.threads.Thread;
+import com.github.asufana.domain.models.threads.ThreadTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -14,40 +16,33 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @SpringApplicationConfiguration(classes = App.class)
-public class ThreadTest extends AbstractTest {
+public class PostTest extends AbstractTest {
 
     @Autowired
-    ThreadRepo repo;
+    PostRepo repo;
 
     @Override
     public void before() {
         assertThat(repo.findAll().size(), is(0));
     }
 
-    public Thread create() {
+    public Post create() {
         //Thread生成
-        Thread thread = new Thread(T.threadTitle).save();
+        Thread thread = new ThreadTest().create();
+        //Post生成
+        Post post = new Post(thread, T.postTitle).save();
 
         //生成されること
-        assertThat(thread, is(notNullValue()));
-        return thread;
+        assertThat(post, is(notNullValue()));
+        //関連付けられていること
+        assertThat(post.thread(), is(thread));
+        assertThat(thread.posts().get(0), is(post));
+        return post;
     }
 
     @Test
     @Rollback
     public void testConstructor() {
-        Thread thread = create();
-
-        //同一であること
-        assertThat(thread, is(repo.findById(thread.id())));
-    }
-
-    @Test(expected = RuntimeException.class)
-    @Rollback
-    public void testDuplicateExceptoin() {
-        //生成
-        create();
-        //生成 -> エラーが発生すること
         create();
     }
 
