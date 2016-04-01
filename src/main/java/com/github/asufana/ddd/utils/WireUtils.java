@@ -6,7 +6,7 @@ import org.springframework.stereotype.*;
 
 @Component
 //http://stackoverflow.com/questions/28365154/autowired-not-working-in-a-class-entity
-public class SpringBeans implements ApplicationContextAware {
+public class WireUtils implements ApplicationContextAware {
     
     private static final String ERR_MSG = "Spring utility class not initialized";
     
@@ -17,7 +17,7 @@ public class SpringBeans implements ApplicationContextAware {
         context = applicationContext;
     }
     
-    public static <T> T find(final Class<T> clazz) {
+    public static <T> T wired(final Class<T> clazz) {
         if (context == null) {
             throw new IllegalStateException(ERR_MSG);
         }
@@ -25,7 +25,7 @@ public class SpringBeans implements ApplicationContextAware {
     }
     
     @SuppressWarnings("unchecked")
-    public static <T> T find(final String name) {
+    public static <T> T wired(final String name) {
         if (context == null) {
             throw new IllegalStateException(ERR_MSG);
         }
