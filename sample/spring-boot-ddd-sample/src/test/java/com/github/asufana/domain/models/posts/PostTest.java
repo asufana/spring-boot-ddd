@@ -36,7 +36,7 @@ public class PostTest extends AbstractTest {
         assertThat(post, is(notNullValue()));
         //関連付けられていること
         assertThat(post.thread(), is(thread));
-        assertThat(thread.posts().get(0), is(post));
+        assertThat(thread.posts().get(0).get(), is(post));
         return post;
     }
 

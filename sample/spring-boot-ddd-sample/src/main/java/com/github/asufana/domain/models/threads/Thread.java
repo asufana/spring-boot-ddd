@@ -1,7 +1,7 @@
 package com.github.asufana.domain.models.threads;
 
 import com.github.asufana.ddd.entity.AbstractEntity;
-import com.github.asufana.domain.models.posts.Post;
+import com.github.asufana.domain.models.posts.collection.PostCollection;
 import com.github.asufana.domain.models.posts.repo.PostRepo;
 import com.github.asufana.domain.models.threads.repo.ThreadRepo;
 import com.github.asufana.domain.models.threads.vo.ThreadTitle;
@@ -12,7 +12,6 @@ import lombok.experimental.Accessors;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import java.util.List;
 
 import static com.github.asufana.ddd.utils.WireUtils.wired;
 
@@ -39,8 +38,8 @@ public class Thread extends AbstractEntity {
         }
     }
     
-    public List<Post> posts() {
-        return wired(PostRepo.class).findBy(this);
+    public PostCollection posts() {
+        return new PostCollection(wired(PostRepo.class).findBy(this));
     }
     
     public Thread save() {
