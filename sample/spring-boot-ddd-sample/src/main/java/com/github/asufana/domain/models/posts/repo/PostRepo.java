@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface PostRepo extends AbstractRepository<Post> {
 
-    Thread findByTitle(PostTitle title);
+    Post findByTitle(PostTitle title);
 
     @Query("select p from Post p where thread=:thread")
     List<Post> findBy(@Param("thread") Thread thread);
